@@ -1,40 +1,38 @@
 import React from "react";
+import {Link} from "react-router-dom"
 
 interface ICardProps{
-  open: boolean
-  title: string
-  description: string
-  question?: string
-  label_main_btn: string
-  show_second_btn?: boolean
-  doit: () => void
-  reject?: () => void
+    title: string,
+    description: string,
+    category: string,
+    btn_label?: string
+    LanguageId?: string
 }
 
-const Card: React.FC<ICardProps> = ({title,description,question,label_main_btn,show_second_btn,open,doit,reject}) => (
+const Card:React.FC<ICardProps> = ({title,description,category, btn_label, LanguageId}) => {
 
-    <section className={open?"message-area":"message-area hide-ele"} >
-        <div className="card">            
-            <div className="container">
-                <h3><b>{title}</b></h3>
-                <p className="main-message" >{description}</p>
-
-                {(question) && (
-                  <p className="main-question" >{question}</p>
-                )}
-                
-                <div className="card-buttons">
-
-                  { (show_second_btn) && (
-                    <button className="second-btn" onClick={reject} >No, gracias</button>
-                  ) }
-
-                    <button className="profile-btn" onClick={doit}  >{label_main_btn}</button>
-
-                </div>                
+    return(
+        <div className="col-lg-3 col-md-6 mb-4">
+            <div className="card h-100">
+                <div className="card-header">
+                    {category}
+                </div>      
+                <div className="card-body">
+                    <h4 className="card-title">{title}</h4>
+                    <p className="card-text">{description}</p>
+                </div>
+                <div className="card-footer">
+                    { btn_label ? (
+                        <Link to="/languages/new">{btn_label}</Link>
+                    ) : (
+                        <Link to={`/languages/${LanguageId}/edit`}>Edit</Link>
+                    ) }
+                    
+                </div>
             </div>
-          </div>
-    </section>
-)
+        </div>
+    )
+
+}
 
 export default Card;
