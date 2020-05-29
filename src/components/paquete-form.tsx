@@ -4,13 +4,13 @@ import Modal from "./modal";
 import {getClientes} from "../services/cliente";
 import {postPaquete,getPaquete,putPaquete} from "../services/paquete";
 import {ICliente} from "../interfaces/cliente";
+import {IPaquete} from "../interfaces/paquete";
 
 import {useParams} from "react-router-dom";
 
 import useFormHelper from "../helpers/useFormHelper";
 
 const PaqueteForm:React.FC = () => {
-
     const [cliente,setCliente] = useState([]);
     const [cleanUp,setCleanUp] = useState(true);
     

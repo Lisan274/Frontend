@@ -1,15 +1,15 @@
 import React,{useState,useEffect} from "react";
 
-import { deletePaquete} from "../services/paquete";
+import { deleteRepartidor} from "../services/repartidor";
 import {getRepartidoresWPaquetes} from "../services/repartidor";
 import Modal from "./modal";
 import { Link } from "react-router-dom";
 
 const RepartidoresTable: React.FC = () => {
 
-    const [repartidores, setPaquetes] = useState([]);
+    const [repartidores, setRepartidores] = useState([]);
     const [updatedPaquetes,setUpdatedPaquetes] = useState(false);
-    const [paqueteId,setPaqueteId] = useState("");
+    const [repartidorId,setRepartidorId] = useState("");
 
     /* MODAL */
     const [showmodal,setShowmodal] = useState(false);
@@ -25,7 +25,7 @@ const RepartidoresTable: React.FC = () => {
 
     function showModal(event:any){
         console.log(event.target);
-        setPaqueteId(event.target.id);
+        setRepartidorId(event.target.id);
         setShowmodal(true);
     }      
 
@@ -36,14 +36,14 @@ const RepartidoresTable: React.FC = () => {
         setSubmitting(true);
         setMessage("Sending...");
 
-        deletePaquete(paqueteId).then(value=>{
+        deleteRepartidor(repartidorId).then(value=>{
             
             setCompleted(true);
             setSubmitting(false);
             if(value.successed){
-                setMessage("Repartidor eliminado con éxito!");
-            }else{
                 setMessage("Este repartidor tiene paquetes vinculados");
+            }else{
+                setMessage("Repartidor eliminado con exito!");
             }
         });
 
@@ -61,7 +61,7 @@ const RepartidoresTable: React.FC = () => {
     useEffect(()=>{        
         if(!updatedPaquetes){
             getRepartidoresWPaquetes().then(r=>{                
-                setPaquetes(r);
+                setRepartidores(r);
                 setUpdatedPaquetes(true); 
             });            
         } 

@@ -6,11 +6,11 @@ import Modal from "../components/modal";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Subheader from "../components/subheader";
-import LanguageForm from "../components/paquete-form";
+import PaqueteForm from "../components/paquete-form";
 
 import {deletePaquete} from "../services/paquete";
 
-const CreateLanguage: React.FC = () => {     
+const CreatePaquete: React.FC = () => {     
     const [needAction,setNeedAction] = useState(false);
     const [back,setBack] = useState(false);
     const [deleted,setDeleted] = useState(false);
@@ -96,7 +96,7 @@ const CreateLanguage: React.FC = () => {
                         fncbtn={showModal}
                     />
                     <div className="row">
-                        <LanguageForm/>
+                        <PaqueteForm/>
                     </div>
                 </div>
                 <Footer></Footer>
@@ -105,5 +105,5 @@ const CreateLanguage: React.FC = () => {
     }
 }
 
-export default CreateLanguage;
+export default CreatePaquete;
 

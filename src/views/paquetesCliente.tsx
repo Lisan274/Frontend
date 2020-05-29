@@ -26,11 +26,11 @@ const Paquete: React.FC = () => {
                 getType(n).then( r=>{                
                     setUpdate(true);
                     setPaquetes(r.data);
-                    if (n==1){
+                    if (n===1){
                     setCat("PAQUETERIA NORMAL");
-                }else if (n==2){
+                }else if (n===2){
                     setCat("PAQUETERIA FRAGIL");
-                }else if (n==3){
+                }else if (n===3){
                     setCat("ENTREGA RAPIDA");
                 }
                 });

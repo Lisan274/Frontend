@@ -6,7 +6,7 @@ import "./css/main.css";
 import Paquete from "./views/paquetesCliente"
 import Clientes from "./views/clientes-table";
 import Repartidores from "./views/repartidores-table";
-import CreateLanguage from "./views/createPaquete";
+import CreatePaquete from './views/createPaquete';
 const App: React.FC = () => (
 
 
@@ -16,8 +16,8 @@ const App: React.FC = () => (
         <Route path="/clientes/paquetes" exact component={Clientes} />
         <Route path="/repartidores/paquetes" exact component={Repartidores} />
         <Route path="/paquete/tipo_paquete/:n" exact component={Paquete} />
-        <Route path="/paquete/new" exact component={CreateLanguage} />
-        <Route path="/paquete/:id/edit" exact component={CreateLanguage} />
+        <Route path="/paquete/new" exact component={CreatePaquete} />
+        <Route path="/paquete/:id/edit" exact component={CreatePaquete} />
         <Route path="/paquetes" exact component={Paquete} />
     </Switch>
 </BrowserRouter>

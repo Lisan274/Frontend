@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from "react";
 
-import { deletePaquete} from "../services/paquete";
+import { deleteCliente} from "../services/cliente";
 import {getClientesWPaquetes} from "../services/cliente";
 import Modal from "./modal";
 import { Link } from "react-router-dom";
@@ -8,9 +8,9 @@ import { Link } from "react-router-dom";
 
 const ClientesTable: React.FC = () => {
 
-    const [clientes, setPaquetes] = useState([]);
+    const [clientes, setClientes] = useState([]);
     const [updatedPaquetes,setUpdatedPaquetes] = useState(false);
-    const [paqueteId,setPaqueteId] = useState("");
+    const [clienteId,setClienteId] = useState("");
 
     /* MODAL */
     const [showmodal,setShowmodal] = useState(false);
@@ -26,7 +26,7 @@ const ClientesTable: React.FC = () => {
 
     function showModal(event:any){
         console.log(event.target);
-        setPaqueteId(event.target.id);
+        setClienteId(event.target.id);
         setShowmodal(true);
     }      
 
@@ -37,7 +37,7 @@ const ClientesTable: React.FC = () => {
         setSubmitting(true);
         setMessage("Sending...");
 
-        deletePaquete(paqueteId).then(value=>{
+        deleteCliente(clienteId).then(value=>{
             
             setCompleted(true);
             setSubmitting(false);
@@ -62,7 +62,7 @@ const ClientesTable: React.FC = () => {
     useEffect(()=>{        
         if(!updatedPaquetes){
             getClientesWPaquetes().then(r=>{                
-                setPaquetes(r);
+                setClientes(r);
                 setUpdatedPaquetes(true); 
                               
             });            
